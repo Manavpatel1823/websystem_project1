@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisioAI Sign In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Custom CSS -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- FontAwesome for icons -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const createAccountButton = document.getElementById('create-account-btn');
+            const createAccountForm = document.getElementById('create-account-form');
+            const signInForm = document.getElementById('sign-in-form');
+            const signInBenefits = document.getElementById('sign-in-benefits');
+            const loginSubmitButton = document.getElementById('login-submit-btn');
+            const createSubmitButton = document.getElementById('create-submit-btn');
+            
+            // Show Create Account Form and Hide Sign In Benefits
+            createAccountButton.addEventListener('click', function () {
+                signInForm.classList.add('col-md-6'); // Keep sign-in form on left
+                createAccountForm.classList.remove('d-none'); // Show create form on right
+                signInBenefits.classList.add('d-none'); // Hide benefits
+            });
+            
+            // Handle Create Account Form Submission
+            createSubmitButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                alert('Account created successfully!');
+                createAccountForm.classList.add('d-none'); // Hide create account form
+                signInForm.classList.remove('col-md-6'); // Expand sign-in form back to full width
+                signInBenefits.classList.remove('d-none'); // Show benefits again
+            });
+
+            // Handle Sign In Form Submission
+            loginSubmitButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                const username = document.getElementById('login-username').value;
+                const password = document.getElementById('login-password').value;
+                console.log('Login submitted with:', username, password);
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">VisioAI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="signin.html">Sign In</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sign In Section -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="signin-header text-center mb-5">
+                    <h1>Welcome to VisioAI Platform</h1>
+                    <p class="lead">Sign in to access your dashboard, analytics, and vision AI models</p>
+                </div>
+                <div class="row">
+                    <!-- Sign In Form (Left Side) -->
+                    <div class="col-md-6" id="sign-in-form">
+                        <div class="card border-0 shadow-sm p-4">
+                            <div class="card-body">
+                                <h3 class="card-title text-center mb-4">Sign In</h3>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="login-username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="login-username" placeholder="Enter your username" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="login-password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="login-password" placeholder="Enter your password" required>
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <button type="submit" id="login-submit-btn" class="btn btn-primary">Sign In</button>
+                                        <button type="button" id="create-account-btn" class="btn btn-outline-secondary">Create Account</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Create Account Form (Right Side, Initially Hidden) -->
+                    <div class="col-md-6 d-none" id="create-account-form">
+                        <div class="card border-0 shadow-sm p-4">
+                            <div class="card-body">
+                                <h3 class="card-title text-center mb-4">Create New Account</h3>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="create-name" class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" id="create-name" placeholder="Enter your full name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="create-email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="create-email" placeholder="Enter your email" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="create-username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="create-username" placeholder="Choose a username" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="create-password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="create-password" placeholder="Choose a password" required>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button type="submit" id="create-submit-btn" class="btn btn-success">Create Account</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sign In Benefits (Right Side, Initially Visible) -->
+                    <div class="col-md-6" id="sign-in-benefits">
+                        <div class="signin-benefits h-100 d-flex flex-column justify-content-center">
+                            <div class="feature-box mb-4">
+                                <h4>Powerful Dashboard</h4>
+                                <p>Monitor all your vision AI models from a single intuitive interface</p>
+                            </div>
+                            <div class="feature-box mb-4">
+                                <h4>Real-time Analytics</h4>
+                                <p>Get actionable insights from your visual data in real-time</p>
+                            </div>
+                            <div class="feature-box">
+                                <h4>Secure Access</h4>
+                                <p>Your data is encrypted and protected with enterprise-grade security</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
